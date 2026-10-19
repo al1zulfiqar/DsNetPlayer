@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "72904919775",
+    "project_id": "dsnetplayer",
+    "storage_bucket": "dsnetplayer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72904919775:android:22f56fd6f0295376dc376a",
+        "android_client_info": {
+          "package_name": "com.digitalsignage.dsnetcoreplayer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ0sGg18p9nCJylsAbmAfhRjZDgCp3m1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

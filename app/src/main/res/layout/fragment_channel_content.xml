@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player_view1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:use_controller="false"
+        app:resize_mode="fill"
+        />
+    <ImageView
+        android:id="@+id/last_frame_image_view"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:translationZ="50dp"
+        android:src="@drawable/ic_launcher_background"
+        android:visibility="gone"
+        />
+
+
+    <FrameLayout
+        android:id="@+id/webView_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        ></FrameLayout>
+
+    <Button
+        android:id="@+id/testbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Test"
+        android:visibility="gone"
+        ></Button>
+
+    <View
+        android:id="@+id/fade_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="visible"
+        android:translationZ="1000dp"
+        android:elevation="10dp"
+        android:alpha="0"
+
+        />
+
+</RelativeLayout>
