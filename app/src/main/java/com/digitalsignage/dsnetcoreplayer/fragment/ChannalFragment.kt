@@ -385,6 +385,9 @@ class ChannalFragment:Fragment() {
     }
 
     private fun markMediaAsPlayed(media: Media) {
+        if(media!=null && media.playlistID!=null) {
+            PlayerManager.setCurrentPlaylist(media.playlistID)
+        }
         if(media!=null && media.playlistID!=null && PlayerManager.getPlayer()!=null) {
             val markableMediaPlaylist =
                 PlayerManager.getPlayer()!!.getPlaylistById(media.playlistID)
@@ -478,7 +481,8 @@ class ChannalFragment:Fragment() {
         // Check if the activity is finishing or destroyed
         if (mainActivity!=null && !mainActivity!!.isFinishing && !mainActivity.isDestroyed) {
             mainActivity.playlistEnded()
-            PlayerManager.setChannalContentNextIndex(currentMediaIndex+1)
+            // queue is rebuilt starting with the playlist after the current one
+            PlayerManager.setChannalContentNextIndex(0)
         }
     }
     fun updatePlaylistIndexOnly(){
@@ -498,6 +502,7 @@ class ChannalFragment:Fragment() {
                 PlayerManager.setChannalContentNextIndex(0)
             }
             currentMedia = mRunningMediaList.get(currentMediaIndex)
+            markMediaAsPlayed(currentMedia!!)
 
             if(mRunningMediaList.size>1 ){
 

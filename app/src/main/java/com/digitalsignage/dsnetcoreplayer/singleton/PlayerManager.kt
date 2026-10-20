@@ -22,6 +22,16 @@ object PlayerManager {
     fun channalContentNextIndex():Int{
         return channalContentNextIndex
     }
+    // Playlist whose media is currently on screen; playback resumes with the playlist after it
+    private var currentPlaylistId: String? = null
+    fun setCurrentPlaylist(playlistId: String) {
+        currentPlaylistId = playlistId
+    }
+    fun nextPlaylistIndex(playlists: List<Playlist>): Int {
+        if (playlists.isEmpty()) return 0
+        val current = playlists.indexOfFirst { it.playlistID == currentPlaylistId }
+        return if (current == -1) 0 else (current + 1) % playlists.size
+    }
     fun getNextMediaBatch(
         playlist: Playlist,
         currentDateTime: String,
@@ -89,7 +99,9 @@ object PlayerManager {
     fun mergeAllMedia(playlists: List<Playlist>, playlistIndex:Int): List<Media> {
         val aggregatedMedia = mutableListOf<Media>()
 
-        for ( playlist in playlists ){
+        val firstPlaylist = nextPlaylistIndex(playlists)
+        val orderedPlaylists = playlists.drop(firstPlaylist) + playlists.take(firstPlaylist)
+        for ( playlist in orderedPlaylists ){
             if(Utilities.canPlay(playlist.schedule, Utilities.getCurrentDateTime())) {
                 if (playlist.pageID == null) {
                     playlist.media.forEach { mediaItem ->

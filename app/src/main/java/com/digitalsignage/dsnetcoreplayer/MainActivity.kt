@@ -294,7 +294,7 @@ class MainActivity : AppCompatActivity() {
         PlayerManager.setPlayer(player)
         mPlayer = player
         RebootScheduler(this).scheduleReboot(mPlayer!!.rebootTime)
-        playlistIndex = 0
+        playlistIndex = PlayerManager.nextPlaylistIndex(player.playlist)
         PlayerManager.setChannalContentNextIndex(0)
         contactServerTime = player.connectionInterval * 60000
         startPlayListIfNotEmpty(player)
